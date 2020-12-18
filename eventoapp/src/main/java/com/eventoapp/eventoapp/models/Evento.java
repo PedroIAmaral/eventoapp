@@ -1,10 +1,8 @@
 package com.eventoapp.eventoapp.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Evento implements Serializable {
@@ -19,6 +17,9 @@ public class Evento implements Serializable {
     private String local;
     private String data;
     private String horario;
+
+    @OneToMany
+    private List<Convidado> convidados;
 
     public long getCodigo() {
         return codigo;
@@ -58,5 +59,13 @@ public class Evento implements Serializable {
 
     public void setHorario(String horario) {
         this.horario = horario;
+    }
+
+    public List<Convidado> getConvidados() {
+        return convidados;
+    }
+
+    public void setConvidados(List<Convidado> convidados) {
+        this.convidados = convidados;
     }
 }
